@@ -24,7 +24,6 @@ class Products extends CI_Controller
 
 	public function salvar()
 	{
-
 		if ($this->input->post('nome') === NULL) {
 			echo "O campo nome do produto é obrigatorio!";
 			echo "<a href='/products/add' title='voltar'> Voltar </a>";
@@ -35,9 +34,32 @@ class Products extends CI_Controller
 			$dados['preco'] = $this->input->post('valor');
 			$dados['ativo'] = $this->input->post('ativo');
 
-			$this->produtos->addProduto($dados);
+			if ($this->input->post('id') !== NULL) {
+				$this->produtos->editarProduto($dados, $this->input->post('id'));
+			} else {
+				$this->produtos->addProduto($dados);
+			}
 
 			redirect("/");
 		}
+	}
+
+	public function editar($id = NULL)
+	{
+		if ($id === NULL) {
+			redirect('/');
+		}
+
+		$this->load->model('produtos_model', 'produtos');
+
+		$query = $this->produtos->getProdutoById($id);
+
+		if ($query === NULL) {
+			redirect('/');
+		}
+
+		$dados['produto'] = $query;
+
+		$this->load->view('editprodutos', $dados);
 	}
 }

@@ -57,7 +57,7 @@ defined('BASEPATH') or exit('No Direct script access allowed');
 						echo	"<th scope='row'> $um </th>";
 						echo	"<td class='text-center'> $produto->nome </td>";
 						echo	"<td class='text-center'> $produto->preco </td>";
-						echo 	"<td class='text-center'> <a style='margin: 5px' href='/produtos/editar/' $produto->id ' type='button' class='btn btn-primary'>editar </a><a href='/produtos/detalhe/' $produto->id ' type='button' class='btn btn-info'>detalhe</a><a style='margin: 5px' href='/produtos/apagar/'. $produto->id .' type='button' class='btn btn-danger'> apagar</a> </td>";
+						echo 	"<td class='text-center'> <a style='margin: 5px' href='/products/editar/$produto->id' type='button' class='btn btn-primary'>editar </a><a href='/products/detalhe/$produto->id' type='button' class='btn btn-info'>detalhe</a><a style='margin: 5px' href='/products/apagar/$produto->id' type='button' class='btn btn-danger'> apagar</a> </td>";
 						echo	"</tr>";
 
 						$contador++;
