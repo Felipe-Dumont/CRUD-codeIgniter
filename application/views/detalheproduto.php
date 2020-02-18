@@ -18,7 +18,9 @@
 
         <div>
 
-            <h3>Detalhes do produto <?php echo $produto->nome ?> </h3>
+            <h3>Detalhes do produto</h3>
+
+            <h4> Nome: <?php echo $produto->nome ?></h4>
 
             <h4> Preço: <?php echo $produto->preco ?></h4>
             <h4> Status: <?php if ($produto->ativo == 1) {
