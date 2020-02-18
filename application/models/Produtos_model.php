@@ -9,4 +9,11 @@ class Produtos_model extends CI_Model
         $query = $this->db->get('produtos');
         return $query->result();
     }
+
+    public function addProduto($dados = NULL)
+    {
+        if ($dados !== NULL) {
+            $this->db->insert('produtos', $dados);
+        }
+    }
 }

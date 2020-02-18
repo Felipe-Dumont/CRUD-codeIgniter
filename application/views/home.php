@@ -12,11 +12,29 @@ defined('BASEPATH') or exit('No Direct script access allowed');
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
+<style>
+	body {
+		background-color: #F8F8FF;
+	}
+
+	.margem {
+		margin-bottom: 5px;
+	}
+</style>
+
 <body>
 
 	<div class="container">
 		<div class="row">
-			<h1>Listagem de Produtos</h1>
+			<div class="margem">
+				<div class="margem">
+					<h1>Listagem de Produtos</h1>
+				</div>
+
+				<div class="margem">
+					<a href="products/add" class="btn btn-success">Novo produto</a>
+				</div>
+			</div>
 
 			<table class="table">
 				<thead class="thead-dark text-center">
@@ -51,9 +69,7 @@ defined('BASEPATH') or exit('No Direct script access allowed');
 
 			</table>
 
-			<div>
-				<a href="/produtos/novo"> <button type="button" class="btn btn-lg btn-success">Novo produto</button></a>
-			</div>
+
 
 		</div>
 	</div>
