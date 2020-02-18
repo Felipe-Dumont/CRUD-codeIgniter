@@ -40,4 +40,11 @@ class Produtos_model extends CI_Model
             $this->db->delete('produtos', array('id' => $id));
         }
     }
+
+    public function statusProduto($status = NULL, $id = NULL)
+    {
+        if ($id !== NULL && $status !== NULL) {
+            $this->db->update('produtos', $status, array('id' => $id));
+        }
+    }
 }
