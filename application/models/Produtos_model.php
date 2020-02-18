@@ -33,4 +33,11 @@ class Produtos_model extends CI_Model
             $this->db->update('produtos', $dados, array('id' => $id));
         }
     }
+
+    public function apagarProduto($id = NULL)
+    {
+        if ($id !== NULL) {
+            $this->db->delete('produtos', array('id' => $id));
+        }
+    }
 }

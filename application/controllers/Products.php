@@ -62,4 +62,23 @@ class Products extends CI_Controller
 
 		$this->load->view('editprodutos', $dados);
 	}
+
+	public function apagar($id = NULL)
+	{
+		if ($id === NULL) {
+			redirect('/');
+		}
+
+		$this->load->model('produtos_model', 'produtos');
+
+		$query = $this->produtos->getProdutoById($id);
+
+
+		if ($query !== NULL) {
+			$this->produtos->apagarProduto($query->id);
+			redirect('/');
+		} else {
+			redirect('/');
+		}
+	}
 }
