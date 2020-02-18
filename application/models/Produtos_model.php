@@ -47,4 +47,12 @@ class Produtos_model extends CI_Model
             $this->db->update('produtos', $status, array('id' => $id));
         }
     }
+
+    public function detalheProduto($id = NULL)
+    {
+        if ($id !== NULL) {
+            $query = $this->db->get('produtos', array('id' => $id));
+            return $query->result();
+        }
+    }
 }

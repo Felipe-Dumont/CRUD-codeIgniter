@@ -82,6 +82,25 @@ class Products extends CI_Controller
 		}
 	}
 
+	public function detalhe($id = NULL)
+	{
+		if ($id === NULL) {
+			redirect('/');
+		}
+
+		$this->load->model('produtos_model', 'produtos');
+
+		$query = $this->produtos->getProdutoById($id);
+
+		if ($query === NULL) {
+			redirect('/');
+		}
+
+		$dados['produto'] = $query;
+
+		$this->load->view('detalheproduto', $dados);
+	}
+
 	public function status($id = NULL)
 	{
 		if ($id === NULL) {

@@ -62,13 +62,12 @@ defined('BASEPATH') or exit('No Direct script access allowed');
 						echo "<td class='text-center'>";
 
 						if ($produto->ativo == 1) {
-							echo "<span class='badge badge-success'><a href='/products/status/$produto->id' title='Desativar'> Ativo </a></span>";
+							echo "<span ><a class='badge badge-pill badge-success' href='/products/status/$produto->id' title='Desativar'> Ativo </a></span>";
 						} else {
-							echo "<span class='badge badge-warning'><a href='/products/status/$produto->id' title='Ativar'> Inativo </a></span>";
+							echo "<span ><a class='badge badge-pill badge-warning' href='/products/status/$produto->id' title='Ativar'> Inativo </a></span>";
 						}
 
 						echo "</td>";
-
 
 						echo 	"<td class='text-center'> <a style='margin: 5px' href='/products/editar/$produto->id' type='button' class='btn btn-primary'>editar </a><a href='/products/detalhe/$produto->id' type='button' class='btn btn-info'>detalhe</a><a style='margin: 5px' href='/products/apagar/$produto->id' type='button' class='btn btn-danger'> apagar</a> </td>";
 						echo	"</tr>";
