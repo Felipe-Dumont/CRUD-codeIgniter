@@ -9,7 +9,7 @@ class Products extends CI_Controller
 
 		$config = array(
 			"base_url" => base_url('products/p'),
-			"per_page" => 4,
+			"per_page" => 6,
 			"num_links" => 3,
 			"uri_segment" => 3,
 			"total_rows" => $this->produtos->countAll(),
@@ -27,7 +27,7 @@ class Products extends CI_Controller
 			"next_tag_close" => "</li>",
 			"last_tag_open" => "<li class='page-item page-link'>",
 			"last_tag_close" => "</li>",
-			"cur_tag_open" => "<li class='page-item page-link active'><a href='#'>",
+			"cur_tag_open" => "<li class='page-item active'><a class='page-link' href='#'>",
 			"cur_tag_close" => "</a></li>",
 			"num_tag_open" => "<li class='page-item page-link'>",
 			"num_tag_close" => "</li>"

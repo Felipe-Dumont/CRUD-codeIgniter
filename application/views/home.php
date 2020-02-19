@@ -49,7 +49,7 @@ defined('BASEPATH') or exit('No Direct script access allowed');
 				<div class="msg">
 
 					<div class="margem">
-						<a href="products/add" class="btn btn-success">Novo produto</a>
+						<a href="/products/add" class="btn btn-success">Novo produto</a>
 					</div>
 
 					<?php
