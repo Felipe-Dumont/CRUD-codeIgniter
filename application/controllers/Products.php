@@ -7,7 +7,39 @@ class Products extends CI_Controller
 	{
 		$this->load->model('produtos_model', 'produtos');
 
-		$data['produtos'] = $this->produtos->getProdutos();
+		$config = array(
+			"base_url" => base_url('products/p'),
+			"per_page" => 4,
+			"num_links" => 3,
+			"uri_segment" => 3,
+			"total_rows" => $this->produtos->countAll(),
+			"full_tag_open" => "<ul class='pagination'>",
+			"full_tag_close" => "</ul>",
+			"first_link" => FALSE,
+			"last_link" => FALSE,
+			"first_tag_open" => "<li class='page-item page-link'>",
+			"first_tag_close" => "</li>",
+			"prev_link" => "Anterior",
+			"prev_tag_open" => "<li class='page-item page-link'>",
+			"prev_tag_close" => "</li>",
+			"next_link" => "Próxima",
+			"next_tag_open" => "<li class='page-item page-link'>",
+			"next_tag_close" => "</li>",
+			"last_tag_open" => "<li class='page-item page-link'>",
+			"last_tag_close" => "</li>",
+			"cur_tag_open" => "<li class='page-item page-link active'><a href='#'>",
+			"cur_tag_close" => "</a></li>",
+			"num_tag_open" => "<li class='page-item page-link'>",
+			"num_tag_close" => "</li>"
+		);
+
+		$this->pagination->initialize($config);
+
+		$data['pagination'] = $this->pagination->create_links();
+
+		$offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+		$data['produtos'] = $this->produtos->getProdutos('id', 'asc', $config['per_page'], $offset);
 
 		$this->load->view(
 			'home',
@@ -72,7 +104,6 @@ class Products extends CI_Controller
 		$this->load->model('produtos_model', 'produtos');
 
 		$query = $this->produtos->getProdutoById($id);
-
 
 		if ($query !== NULL) {
 			$this->produtos->apagarProduto($query->id);

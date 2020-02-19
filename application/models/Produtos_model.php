@@ -4,10 +4,21 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Produtos_model extends CI_Model
 {
-    public function getProdutos()
+    public function getProdutos($sort = 'id', $order = 'asc', $limit = NULL, $offset = NULL)
     {
+        $this->db->order_by($sort, $order);
+
+        if ($limit) {
+            $this->db->limit($limit, $offset);
+        }
+
         $query = $this->db->get('produtos');
         return $query->result();
+    }
+
+    public function countAll()
+    {
+        return $this->db->count_all('produtos');
     }
 
     public function addProduto($dados = NULL)

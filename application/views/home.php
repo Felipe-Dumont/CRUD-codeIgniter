@@ -20,20 +20,50 @@ defined('BASEPATH') or exit('No Direct script access allowed');
 	.margem {
 		margin-bottom: 5px;
 	}
+
+	.teste {
+		width: 100%;
+	}
+
+	.msg {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.center {
+		justify-content: center;
+		margin-top: 20px;
+	}
 </style>
 
 <body>
 
 	<div class="container">
 		<div class="row">
-			<div class="margem">
+			<div class="margem teste">
 				<div class="margem">
 					<h1>Listagem de Produtos</h1>
 				</div>
 
-				<div class="margem">
-					<a href="products/add" class="btn btn-success">Novo produto</a>
+				<div class="msg">
+
+					<div class="margem">
+						<a href="products/add" class="btn btn-success">Novo produto</a>
+					</div>
+
+					<?php
+
+					if (!isset($teste)) { } else if ($teste == true) {
+						echo '<div style="width: 60%;" class="alert alert-success text-center" role="alert">';
+						echo 'Produto apagado com sucesso';
+						echo '</div>';
+					}
+
+					?>
+
 				</div>
+
 			</div>
 
 			<table class="table">
@@ -55,7 +85,7 @@ defined('BASEPATH') or exit('No Direct script access allowed');
 					foreach ($produtos as $produto) {
 
 						echo 	"<tr class='text-center'>";
-						echo	"<th scope='row'> $um </th>";
+						echo	"<th scope='row'> $produto->id </th>";
 						echo	"<td class='text-center'> $produto->nome </td>";
 						echo	"<td class='text-center'> $produto->preco </td>";
 
@@ -69,21 +99,22 @@ defined('BASEPATH') or exit('No Direct script access allowed');
 
 						echo "</td>";
 
-						echo 	'<td class="text-center"> <a style="margin: 5px" href="/products/editar/' . $produto->id . '" type="button" class="btn btn-primary">editar </a><a href="/products/detalhe/' . $produto->id . '" type="button" class="btn btn-info">detalhe</a><a onclick="return confirm(\'Deseja realmente excluir o produto ' . $produto->nome . ' ?\')" style="margin: 5px" href="/products/apagar/' . $produto->id . '" type="button" class="btn btn-danger"> apagar</a> </td>';
+						echo 	'<td class="text-center"> <a style="margin: 2px" href="/products/editar/' . $produto->id . '" type="button" class="btn btn-primary">editar </a><a href="/products/detalhe/' . $produto->id . '" type="button" class="btn btn-info">detalhe</a><a onclick="return confirm(\'Deseja realmente excluir o produto ' . $produto->nome . ' ?\')" style="margin: 2px" href="/products/apagar/' . $produto->id . '" type="button" class="btn btn-danger"> apagar</a> </td>';
 						echo	"</tr>";
 
 						$contador++;
-						$um++;
 					}
 
 					?>
 				</tbody>
 
 			</table>
-
-
+			<div class=" teste msg center">
+				<?= $pagination; ?>
+			</div>
 
 		</div>
+
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
