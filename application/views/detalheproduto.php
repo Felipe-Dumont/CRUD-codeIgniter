@@ -6,6 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalhes do produto</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="<?php echo base_url('application/views/js/pace/pace.min.js') ?>"></script>
+
+    <style>
+        .pace {
+            -webkit-pointer-events: none;
+            pointer-events: none;
+
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        .pace-inactive {
+            display: none;
+        }
+
+        .pace .pace-progress {
+            background: red;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            right: 100%;
+            width: 100%;
+            height: 5px;
+        }
+    </style>
 </head>
 
 <body>

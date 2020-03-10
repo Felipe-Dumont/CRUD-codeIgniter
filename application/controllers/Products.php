@@ -8,29 +8,29 @@ class Products extends CI_Controller
 		$this->load->model('produtos_model', 'produtos');
 
 		$config = array(
-			"base_url" => base_url('products/p'),
-			"per_page" => 6,
-			"num_links" => 3,
-			"uri_segment" => 3,
-			"total_rows" => $this->produtos->countAll(),
-			"full_tag_open" => "<ul class='pagination'>",
-			"full_tag_close" => "</ul>",
-			"first_link" => FALSE,
-			"last_link" => FALSE,
-			"first_tag_open" => "<li class='page-item page-link'>",
-			"first_tag_close" => "</li>",
-			"prev_link" => "Anterior",
-			"prev_tag_open" => "<li class='page-item page-link'>",
-			"prev_tag_close" => "</li>",
-			"next_link" => "Próxima",
-			"next_tag_open" => "<li class='page-item page-link'>",
-			"next_tag_close" => "</li>",
-			"last_tag_open" => "<li class='page-item page-link'>",
-			"last_tag_close" => "</li>",
-			"cur_tag_open" => "<li class='page-item active'><a class='page-link' href='#'>",
-			"cur_tag_close" => "</a></li>",
-			"num_tag_open" => "<li class='page-item page-link'>",
-			"num_tag_close" => "</li>"
+			"base_url"			=> base_url('products/p'),
+			"per_page" 			=> 6,
+			"num_links" 		=> 3,
+			"uri_segment" 		=> 3,
+			"total_rows" 		=> $this->produtos->countAll(),
+			"full_tag_open" 	=> "<ul class='pagination'>",
+			"full_tag_close" 	=> "</ul>",
+			"first_link" 		=> FALSE,
+			"last_link" 		=> FALSE,
+			"first_tag_open" 	=> "<li class='page-item page-link bot'>",
+			"first_tag_close" 	=> "</li>",
+			"prev_link" 		=> "Anterior",
+			"prev_tag_open" 	=> "<li class='page-item page-link bot'>",
+			"prev_tag_close" 	=> "</li>",
+			"next_link" 		=> "Próxima",
+			"next_tag_open" 	=> "<li class='page-item page-link bot'>",
+			"next_tag_close" 	=> "</li>",
+			"last_tag_open" 	=> "<li class='page-item page-link bot'>",
+			"last_tag_close" 	=> "</li>",
+			"cur_tag_open" 		=> "<li class='page-item active'><a class='page-link bot' href='#'>",
+			"cur_tag_close" 	=> "</a></li>",
+			"num_tag_open" 		=> "<li class='page-item page-link bot'>",
+			"num_tag_close" 	=> "</li>"
 		);
 
 		$this->pagination->initialize($config);
@@ -39,7 +39,7 @@ class Products extends CI_Controller
 
 		$offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
-		$data['produtos'] = $this->produtos->getProdutos('id', 'asc', $config['per_page'], $offset);
+		$data['produtos']	= $this->produtos->getProdutos('id', 'asc', $config['per_page'], $offset);
 
 		$this->load->view(
 			'home',
@@ -146,6 +146,7 @@ class Products extends CI_Controller
 			$query->ativo == 1 ? $dados['ativo'] = 0 : $dados['ativo'] = 1;
 
 			$this->produtos->statusProduto($dados, $query->id);
+
 			redirect('/');
 		} else {
 			redirect('/');
